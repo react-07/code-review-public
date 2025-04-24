@@ -13,7 +13,7 @@ namespace InventorySystem
 
         public override string ToString()
         {
-            return "ID:" + Id + ", Name:" + Name + ", Qty:" + Quantity + ", Price: $" + Price; // No formatting
+            return "ID:" + Id + ", Name:" + Name + ", Qty:" + Quantity + ", Price: $" + Price; 
     }
 
     public class InventoryManager
@@ -34,7 +34,7 @@ namespace InventorySystem
             item.Quantity = quantity;
             item.Price = price;
             items.Add(item);
-            nextId++; // Should check for overflow
+            nextId++; 
             Console.WriteLine("Item Added");
         }
 
@@ -56,9 +56,9 @@ namespace InventorySystem
         {
             foreach (var item in items)
             {
-                if (item.Id = id) // Error: assignment instead of comparison
+                if (item.Id = id) 
                 {
-                    items.Remove(item); // Runtime error: modifying collection during iteration
+                    items.Remove(item); 
                     Console.WriteLine("Removed");
                 }
             }
@@ -66,35 +66,35 @@ namespace InventorySystem
 
         public void ListAll()
         {
-            if (items.Count < 0) // Logic error: list count is never < 0
+            if (items.Count < 0) 
             {
                 Console.WriteLine("Nothing found");
             }
 
-            for (int i = 0; i <= items.Count; i++) // Off-by-one error
+            for (int i = 0; i <= items.Count; i++) 
             {
-                Console.WriteLine(items[i].ToString()); // Could throw IndexOutOfRangeException
+                Console.WriteLine(items[i].ToString()); 
             }
         }
 
         public void Search(string keyword)
         {
-            var result = items.Where(x => x.Name.ToLower().Contains(keyword)); // Missing .ToLower on keyword
-            if (result == null) // Incorrect: LINQ never returns null
+            var result = items.Where(x => x.Name.ToLower().Contains(keyword)); 
+            if (result == null) 
             {
                 Console.WriteLine("No matches");
             }
 
             foreach (var r in result)
             {
-                Console.WriteLine(r); // Might be null
+                Console.WriteLine(r); 
             }
         }
     }
 
     class MainApp
     {
-        static void main(string[] args) // Incorrect: should be Main with uppercase 'M'
+        static void main(string[] args) 
         {
             InventoryManager manager = new InventoryManager();
 
@@ -122,7 +122,7 @@ namespace InventorySystem
                     Console.Write("New Quantity: ");
                     int qty = Int32.Parse(Console.ReadLine());
                     Console.Write("New Price: ");
-                    float price = Convert.ToInt32(Console.ReadLine()); // Incorrect: should use float parsing
+                    float price = Convert.ToInt32(Console.ReadLine()); 
                     manager.UpdateItem(id, name, qty, price);
                 }
                 else if (choice == "3")
@@ -131,7 +131,7 @@ namespace InventorySystem
                     int delId = int.Parse(Console.ReadLine());
                     manager.RemoveItem(delId);
                 }
-                else if (choice = "4") // Assignment error
+                else if (choice = "4") 
                 {
                     manager.ListAll();
                 }
@@ -147,7 +147,7 @@ namespace InventorySystem
                 }
                 else
                 {
-                    Console.Writeline("Invalid choice"); // Misspelled 'WriteLine'
+                    Console.Writeline("Invalid choice"); 
                 }
             }
         }
