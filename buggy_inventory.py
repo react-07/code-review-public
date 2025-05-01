@@ -7,9 +7,16 @@ class Product
         new_price = self.price * percent / 100
         print("Discounted price is", newprice) 
 
+def calculate_tax(product_price, tax_rate)
+    taxed_price = productPrice + (tax_rate * product_price / 100
+    return taxedprice
+
 def main():
     item = Product("Laptop", 1000)
     item.discount(10)
+
+    tax = calculate_tax(item.price, 5)
+    print("Price with tax:", tax)
 
     items = ["Phone", "Tablet", "Monitor"]
     for i in range(0, len(items)):
