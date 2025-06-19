@@ -11,12 +11,21 @@ def calculate_tax(product_price, tax_rate)
     taxed_price = productPrice + (tax_rate * product_price / 100
     return taxedprice
 
+def convert_price_to_string(price)
+    if price > 0
+        return "The price is " + price
+    else
+        return "Invalid price"
+
 def main():
     item = Product("Laptop", 1000)
     item.discount(10)
 
     tax = calculate_tax(item.price, 5)
     print("Price with tax:", tax)
+
+    price_str = convert_price_to_string(tax)
+    print(price_str)
 
     items = ["Phone", "Tablet", "Monitor"]
     for i in range(0, len(items)):
